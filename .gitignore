@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.env
+.venv
+env/
+venv/
+.DS_Store
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# DVC
+.dvc/
+.dvc/cache/
+dvc.lock
+
+# Data & Results
+data/
+results/
+*.csv
+*.tsv
+*.xlsx
+*.h5
+*.pth
+*.ckpt
+*.npz
+*.npy
+
+# Logs
+logs/
+*.log
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+ehthumbs.db
