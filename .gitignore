@@ -42,3 +42,4 @@ logs/
 *.swp
 Thumbs.db
 ehthumbs.db
+artifacts/*

@@ -33,7 +33,6 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
     except Exception as e:
         raise e
 
-@ensure_annotations
 def write_yaml(path_to_yaml: Path, content: Any) -> None:
     """Writes a dictionary to a yaml file
 
@@ -52,7 +51,6 @@ def write_yaml(path_to_yaml: Path, content: Any) -> None:
     except Exception as e:
         raise e
 
-@ensure_annotations
 def save_json(path_to_json: Path, data: dict) -> None:  
     """Saves a dictionary to a json file
 
@@ -71,7 +69,6 @@ def save_json(path_to_json: Path, data: dict) -> None:
     except Exception as e:
         raise e
     
-@ensure_annotations
 def create_directories(path_to_directories: list) -> None:
     """Creates directories
 
@@ -103,7 +100,6 @@ def load_json(path_to_json: Path) -> dict:
     except Exception as e:
         raise e
     
-@ensure_annotations
 def save_bin(data: Any, path: Path) -> None:
     """Saves data to a binary file using joblib
 
