@@ -27,6 +27,7 @@ results/
 *.tsv
 *.xlsx
 *.h5
+*.keras
 *.pth
 *.ckpt
 *.npz

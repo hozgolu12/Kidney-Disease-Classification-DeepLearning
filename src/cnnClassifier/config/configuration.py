@@ -1,6 +1,7 @@
 from cnnClassifier.constants import *
+import os
 from cnnClassifier.utils.common import read_yaml, create_directories
-from cnnClassifier.entity.config_entity import DataIngestionConfig, PrepareBaseModelConfig
+from cnnClassifier.entity.config_entity import DataIngestionConfig, PrepareBaseModelConfig, TrainingConfig
 class ConfigurationManager:
     def __init__(
         self,
@@ -43,3 +44,37 @@ class ConfigurationManager:
         )
 
         return prepare_base_model_config
+    
+    def get_training_config(self) -> TrainingConfig:
+        training_config = self.config.training
+        prepare_base_model = self.config.prepare_base_model
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "kidney-ct-scan-image")
+        training_params = self.params
+
+        create_directories([Path(training_config.root_dir)])
+
+        training_config = TrainingConfig(
+            root_dir=Path(training_config.root_dir),
+            trained_model_path=Path(training_config.trained_model_path),
+            updated_base_model_path=Path(
+                prepare_base_model.updated_base_model_path
+            ),
+            training_data=Path(training_data),
+            params_epochs=training_params.EPOCHS,
+            params_batch_size=training_params.BATCH_SIZE,
+            params_is_augmentation=training_params.AUGMENTATION,
+            params_image_size=training_params.IMAGE_SIZE,
+        )
+
+        return training_config
+
+    def get_evaluation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model = "artifacts/training/trained_model.h5",
+            training_data = "artifacts/data_ingestion/kidney-ct-scan-image",
+            mlflow_uri= "https://dagshub.com/hozmha/Kidney-Disease-Classification-DeepLearning.mlflow",
+            all_params = self.params,
+            params_image_size = self.params.IMAGE_SIZE,
+            params_batch_size = self.params.BATCH_SIZE   
+        )
+        return eval_config
