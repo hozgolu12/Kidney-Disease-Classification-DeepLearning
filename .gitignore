@@ -15,6 +15,10 @@ venv/
 # Jupyter Notebooks
 .ipynb_checkpoints
 
+# DVC
+.dvc/
+.dvc/cache/
+
 # Data & Results
 data/
 results/
