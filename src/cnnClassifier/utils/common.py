@@ -161,20 +161,11 @@ def get_size(path: Path) -> str:
         raise e
     
 @ensure_annotations
-def decodeImage(image_base64_string: str) -> bytes:
-    """Decodes a base64 encoded image string to bytes
-
-    Args:
-        image_base64_string (str): Base64 encoded image string
-
-    Returns:
-        bytes: Decoded image in bytes
-    """
-    try:
-        decoded_image = base64.b64decode(image_base64_string)
-        return decoded_image
-    except Exception as e:
-        raise e
+def decodeImage(imgstring: str, fileName: str):
+    imgdata = base64.b64decode(imgstring)
+    with open(fileName, 'wb') as f:
+        f.write(imgdata)
+        f.close()
     
 @ensure_annotations
 def encodeImageInBase64(image_path: Path) -> str:
