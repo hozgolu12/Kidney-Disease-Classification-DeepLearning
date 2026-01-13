@@ -62,7 +62,9 @@ def save_json(path_to_json: Path, data: dict) -> None:
         e: Raises an exception if there is an error in writing the file
     """
     try:
-        os.makedirs(os.path.dirname(path_to_json), exist_ok=True)
+        dir_name = os.path.dirname(path_to_json)
+        if dir_name:
+            os.makedirs(dir_name, exist_ok=True)
         with open(path_to_json, "w") as json_file:
             json.dump(data, json_file, indent=4)
             logger.info(f"json file: {path_to_json} saved successfully")

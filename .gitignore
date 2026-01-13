@@ -18,7 +18,6 @@ venv/
 # DVC
 .dvc/
 .dvc/cache/
-dvc.lock
 
 # Data & Results
 data/
